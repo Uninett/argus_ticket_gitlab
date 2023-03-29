@@ -68,9 +68,7 @@ class GitlabPlugin(TicketPlugin):
         }
 
         try:
-            project = client.projects.get(
-                ticket_information["project_namespace_and_name"]
-            )
+            project = client.projects.get(ticket_information["project_namespace_and_name"])
             ticket = project.issues.create(data)
         except Exception as e:
             LOG.exception("Gitlab: Ticket could not be created.")
