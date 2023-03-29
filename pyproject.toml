@@ -6,7 +6,7 @@ build-backend = "flit_core.buildapi"
 name = "argus_ticket_gitlab"
 authors = [{name = "Johanna England", email = "johanna.england@sikt.no"}]
 maintainers = [{name = "Johanna England", email = "johanna.england@sikt.no"}]
-readme = "README.rst"
+readme = "README.md"
 dependencies = [
     "argus-server>=1.9",
     "markdownify>=0.11",
