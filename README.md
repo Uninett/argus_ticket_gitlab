@@ -71,7 +71,7 @@ This is a plugin to create tickets in Gitlab from [Argus](https://gitlab.com/Uni
 
         ```
         {
-            "custom_fields_mapping" : [
+            "labels_mapping" : [
                 attribute_of_incident,
                 {"tag": name_of_tag},
             ]
