@@ -4,6 +4,7 @@ This is a plugin to create tickets in Gitlab from [Argus](https://gitlab.com/Uni
 
 ## Settings
 
+* `TICKET_PLUGIN`: `"argus_ticket_gitlab.GitlabPlugin"`
 * `TICKET_ENDPOINT`: `"https://gitlab.com/"` or link to self-hosted instance, absolute URL
 * `TICKET_AUTHENTICATION_SECRET`: Create a [project access token](https://docs.gitlab.com/ee/user/project/settings/project_access_tokens.html) or a [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) with the scope `api`:
 
