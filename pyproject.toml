@@ -8,7 +8,7 @@ authors = [{name = "Johanna England", email = "johanna.england@sikt.no"}]
 maintainers = [{name = "Johanna England", email = "johanna.england@sikt.no"}]
 readme = "README.md"
 dependencies = [
-    "argus-server>=1.9",
+    "argus-server>=1.15",
     "markdownify>=0.11",
     "python-gitlab>=3.12",
 ]
@@ -16,7 +16,7 @@ requires-python = ">=3.7"
 classifiers = [
     "Development Status :: 4 - Beta",
     "Framework :: Django",
-    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.2",
     "Intended Audience :: Information Technology",
     "Intended Audience :: System Administrators",
     "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
