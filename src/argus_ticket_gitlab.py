@@ -18,7 +18,7 @@ from argus.incident.ticket.base import (
 LOG = logging.getLogger(__name__)
 
 
-__version__ = "1.0"
+__version__ = "1.1"
 __all__ = [
     "GitlabPlugin",
 ]
@@ -51,7 +51,9 @@ class GitlabPlugin(TicketPlugin):
         return {key: value for key, value in incident_tags_list}
 
     @staticmethod
-    def get_labels(ticket_information: dict, serialized_incident: dict) -> tuple[dict, List[str]]:
+    def get_labels(
+        ticket_information: dict, serialized_incident: dict
+    ) -> tuple[dict, List[str]]:
         incident_tags = GitlabPlugin.convert_tags_to_dict(serialized_incident["tags"])
         labels = ticket_information.get("labels_set", [])
         labels_mapping = ticket_information.get("labels_mapping", [])
@@ -97,7 +99,9 @@ class GitlabPlugin(TicketPlugin):
         client = cls.create_client(endpoint, authentication)
 
         try:
-            project = client.projects.get(ticket_information["project_namespace_and_name"])
+            project = client.projects.get(
+                ticket_information["project_namespace_and_name"]
+            )
         except ConnectionError:
             connection_error = "Gitlab: Could not connect to Gitlab."
             LOG.exception(connection_error)
