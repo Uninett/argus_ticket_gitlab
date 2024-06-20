@@ -55,7 +55,8 @@ class GitlabPlugin(TicketPlugin):
         ticket_information: dict, serialized_incident: dict
     ) -> tuple[dict, List[str]]:
         incident_tags = GitlabPlugin.convert_tags_to_dict(serialized_incident["tags"])
-        labels = ticket_information.get("labels_set", [])
+        labels = []
+        labels.extend(ticket_information.get("labels_set", []))
         labels_mapping = ticket_information.get("labels_mapping", [])
         missing_fields = []
 
