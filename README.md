@@ -81,11 +81,11 @@ This is a plugin to create tickets in Gitlab from [Argus](https://gitlab.com/Uni
 
 ## Code style
 
-argus_ticket_gitlab uses black as a source code formatter. Black can be installed
-by running
+argus_ticket_rt uses [ruff](https://docs.astral.sh/ruff/) as a Python source code
+formatter and linter. Ruff can be installed by running
 
 ```console
-$ pip install black
+$ pip install ruff
 ```
 
 A pre-commit hook will format new code automatically before committing.
@@ -94,3 +94,14 @@ To enable this pre-commit hook, run
 ```console
 $ pre-commit install
 ```
+
+## Running tests
+
+If you have installed `tox`, the following command will
+test argus_ticket_jira code against several Django versions, several Python versions, and
+automatically compute code coverage.
+```console
+$ tox
+```
+An [HTML coverage report](htmlcov/index.html) will be generated.
+Refer to the [tox.ini](tox.ini) file for further options.
