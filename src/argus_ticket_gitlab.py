@@ -4,6 +4,7 @@ import logging
 from typing import List
 
 import gitlab
+from argus.incident.models import Incident
 from argus.incident.ticket.base import (
     TicketClientException,
     TicketCreationException,
@@ -155,3 +156,10 @@ class GitlabPlugin(TicketPlugin):
             raise TicketPluginException(f"Gitlab: {e}")
         else:
             return ticket.web_url
+
+    @staticmethod
+    def get_ticket_identifier(incident: Incident) -> str:
+        try:
+            return incident.ticket_url.rsplit("/work_items/", maxsplit=1)[1].strip("/")
+        except Exception:
+            return incident.ticket_url
