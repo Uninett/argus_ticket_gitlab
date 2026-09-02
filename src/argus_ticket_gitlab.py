@@ -4,9 +4,6 @@ import logging
 from typing import List
 
 import gitlab
-from markdownify import markdownify
-from requests.exceptions import ConnectionError
-
 from argus.incident.ticket.base import (
     TicketClientException,
     TicketCreationException,
@@ -14,6 +11,8 @@ from argus.incident.ticket.base import (
     TicketPluginException,
     TicketSettingsException,
 )
+from markdownify import markdownify
+from requests.exceptions import ConnectionError
 
 LOG = logging.getLogger(__name__)
 
@@ -82,7 +81,7 @@ class GitlabPlugin(TicketPlugin):
         """Creates and returns a Gitlab client"""
         try:
             client = gitlab.Gitlab(url=endpoint, private_token=authentication["token"])
-        except Exception as e:
+        except Exception:
             client_error = "Gitlab: Client could not be created."
             LOG.exception(client_error)
             raise TicketClientException(client_error)
