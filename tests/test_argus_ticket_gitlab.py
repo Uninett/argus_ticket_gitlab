@@ -35,10 +35,30 @@ class GitlabTicketPluginTests(SimpleTestCase):
 
 
 class GetTicketIdentifierTests(SimpleTestCase):
-    def test_get_ticket_identifier_returns_ticket_id_for_valid_url(
+    def test_get_ticket_identifier_returns_ticket_id_for_work_items_url(
         self,
     ):
         ticket_url = "https://gitlab.com/example/testing/-/work_items/1"
+        gitlab_plugin = GitlabPlugin()
+        incident = Mock(ticket_url=ticket_url)
+
+        ticket_identifier = gitlab_plugin.get_ticket_identifier(incident=incident)
+        self.assertEqual(ticket_identifier, "1")
+
+    def test_get_ticket_identifier_returns_ticket_id_for_issues_url(
+        self,
+    ):
+        ticket_url = "https://gitlab.com/example/testing/-/issues/1"
+        gitlab_plugin = GitlabPlugin()
+        incident = Mock(ticket_url=ticket_url)
+
+        ticket_identifier = gitlab_plugin.get_ticket_identifier(incident=incident)
+        self.assertEqual(ticket_identifier, "1")
+
+    def test_get_ticket_identifier_returns_ticket_id_for_epics_url(
+        self,
+    ):
+        ticket_url = "https://gitlab.com/example/testing/-/epics/1"
         gitlab_plugin = GitlabPlugin()
         incident = Mock(ticket_url=ticket_url)
 
