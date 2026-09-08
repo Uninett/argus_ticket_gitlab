@@ -19,7 +19,7 @@ from requests.exceptions import ConnectionError
 LOG = logging.getLogger(__name__)
 
 
-__version__ = "1.1.1"
+__version__ = "1.2.0"
 __all__ = [
     "GitlabPlugin",
 ]
