@@ -1,9 +1,11 @@
 "Allow argus-server to create tickets in Gitlab"
 
 import logging
+import re
 from typing import List
 
 import gitlab
+from argus.incident.models import Incident
 from argus.incident.ticket.base import (
     TicketClientException,
     TicketCreationException,
@@ -155,3 +157,12 @@ class GitlabPlugin(TicketPlugin):
             raise TicketPluginException(f"Gitlab: {e}")
         else:
             return ticket.web_url
+
+    @staticmethod
+    def get_ticket_identifier(incident: Incident) -> str:
+        try:
+            return re.split("/work_items/|/issues/|/epics/", incident.ticket_url)[
+                -1
+            ].strip("/")
+        except Exception:
+            return incident.ticket_url
